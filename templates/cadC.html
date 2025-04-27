@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="contact-form-container">
+    <div class="form-left">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/whatsapp.png" alt="whatsapp icon" />
+        <h2>Cadastro</h2>
+        <p>Cadastre seus clientes<br> para mantê-los informados sobre os seus produtos!</p>
+        <a href="/">Voltar</a>
+        <a href="/clientes">Ver Todos os Clientes</a>
+    </div>
+
+    <div class="form-right">
+        <form method="post">
+            <label>Nome do Cliente</label>
+            <input type="text" name="nome" placeholder="Digite o nome" required>
+
+            <label>Telefone do Cliente</label>
+            <input type="text" name="numero" placeholder="+550000000000" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

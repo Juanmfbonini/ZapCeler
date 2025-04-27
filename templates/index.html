@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="contact-form-container">
+    <div class="form-left">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/whatsapp.png" alt="whatsapp icon" />
+        <h2>Enviar Mensagens</h2>
+        <p>Escreva aqui as mensagens para os seus clientes<br> e deixe eles informados sobre os seus produtos!</p>
+        <a href="/cadastro">Cadastrar novo cliente</a>
+        <a href="/clientes">Ver todos os Clientes</a>
+    </div>
+
+    <div class="form-right">
+        <form method="post">
+            <label>Selecione os Clientes</label>
+            <select size="5" name="clientes" id="clientes" multiple required>
+                    <option value="Todos">Todos os Clientes</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente[0] }}">{{ cliente[1] }} - {{ cliente[2] }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Mensagem do Cliente:</label>
+            <textarea name="mensagem" id="mensagem" required placeholder="Escreva sua mensagem aqui"></textarea><br>
+            <button type="submit" onclick="return confirm('Antes de enviar, certifique-se de que o WhatsApp Web está aberto e sincronizado no navegador padrão do seu computador. Durante o envio, não utilize o computador até que todas as abas que o aplicativo utilize sejam fechadas automaticamente, pois isso pode interferir no processo.')">Enviar Mensagens</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

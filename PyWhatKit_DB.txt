@@ -1,0 +1,60 @@
+Date: 10/4/2025
+Time: 0:24
+Phone Number: +5511911960462
+Message: Oi Kauanny, essa mensagem é um teste do meu código do projeto q estou fazendo pro meu Pai
+--------------------
+Date: 12/4/2025
+Time: 21:7
+Phone Number: +5511961908088
+Message: Oi Pai
+--------------------
+Date: 12/4/2025
+Time: 21:9
+Phone Number: +5511961908088
+Message: Oi Pai
+--------------------
+Date: 12/4/2025
+Time: 21:10
+Phone Number: +5511961908088
+Message: Oi Pai
+--------------------
+Date: 12/4/2025
+Time: 21:12
+Phone Number: +5511961908088
+Message: Oi Pai
+--------------------
+Date: 14/4/2025
+Time: 18:34
+Phone Number: +5511961908088
+Message: Oi Pai, recebeu o teste do python?
+--------------------
+Date: 14/4/2025
+Time: 18:35
+Phone Number: +5511961908088
+Message: Oi Pai, recebeu o teste do python?
+--------------------
+Date: 14/4/2025
+Time: 18:36
+Phone Number: +5511961908088
+Message: Oi Pai, recebeu o teste do python?
+--------------------
+Date: 16/4/2025
+Time: 15:47
+Phone Number: +5511961908088
+Message: Falta mudar apenas uma coisa no projeto e já terminei o backend, ai vou começar a fazer o frontend
+--------------------
+Date: 16/4/2025
+Time: 15:50
+Phone Number: +5511961908088
+Message: Falta apenas mudar uma coisa no Backend q serve para fazer com q as mensagens mudem de uma forma mais rapida e dps vou começar a arrumar o frontend, ai acabei
+--------------------
+Date: 16/4/2025
+Time: 15:55
+Phone Number: +5511961908088
+Message: testando uma coisa
+--------------------
+Date: 16/4/2025
+Time: 15:57
+Phone Number: +5511961908088
+Message: Testando uma coisa
+--------------------

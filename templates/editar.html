@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="contact-form-container">
+    <div class="form-left">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/whatsapp.png" alt="whatsapp icon" />
+        <h2>Editar</h2>
+        <p>Edite as informações cadastradas dos seus clientes para mantê-los informados sobre os seus produtos!</p>
+        <a href="/">Voltar</a>
+        <a href="/clientes">Ver Todos os Clientes</a>
+    </div>
+
+    <div class="form-right">
+        <form method="post">
+            <label>Nome do Cliente</label>
+            <input type="text" id="nome" name="nome" value="{{ cliente[1] }}" required>
+
+            <label>Telefone do Cliente</label>
+            <input type="text" id="numero" name="numero" value="{{ cliente[2] }}" required>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
