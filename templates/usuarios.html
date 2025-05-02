@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading d-flex justify-content-between align-items-center">
+                    <h2 class="my-4">Painel de Usuários</h2>
+                    <h3 class="panel-title">Administração de Acessos</h3>
+                </div>
+
+                <div class="panel-heading d-flex d-flex2 justify-content-between align-items-center">
+                    <h3 class="panel-title panel-title2">Lista de Usuários</h3>
+                    <div class="btn btn2">
+                        <a href="/">Voltar</a><br>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    {% if not usuarios %}
+                        <div class="alert alert-warning">
+                            Nenhum usuário registrado.
+                        </div>
+                    {% endif %}
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Plano</th>
+                                <th>Acesso Gratuito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for u in usuarios %}
+                            <tr>
+                                <td>{{ u[1] }}</td>
+                                <td>
+                                    {% if u[2] == 'pagou' %}
+                                        <span class="label label-success">Pagou</span>
+                                    {% elif u[2] == 'gratuito' %}
+                                        <span class="label label-info">Gratuito</span>
+                                    {% else %}
+                                        <span class="label label-warning">Não Pagou</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ u[3] or 'Nenhum' }}</td>
+                                <td>
+                                    <form action="/admin/usuario/{{ u[0] }}/set-free" method="post">
+                                        <input type="checkbox" name="free" onchange="this.form.submit()" {% if u[2] == 'gratuito' %}checked{% endif %}>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

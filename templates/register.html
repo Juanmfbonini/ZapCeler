@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="contact-form-container">
+    <div class="form-left">
+        <h2>Registrar</h2>
+        <p>Crie sua conta para começar a usar o sistema!</p>
+        Antes de fazer o login, deseja ver os planos mensais? <a href="/planos">Planos do ZapCeler</a>
+        Já tem conta? <a href="/login">Faça login</a>
+    </div>
+
+    <div class="form-right">
+        <form method="post">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Digite seu email" required>
+
+            <label>Senha</label>
+            <input type="password" name="senha" placeholder="Digite sua senha" required>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

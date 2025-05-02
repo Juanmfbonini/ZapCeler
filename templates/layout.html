@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html lang="br">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZapCeler</title>
+    <meta name="description" content="Envie mensagens automáticas para seus clientes de forma prática e eficiente.">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <link rel="icon" href="{{ url_for('static', filename='ZapCeler.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>ZapCeler</title>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 </head>
 <body>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <div class="topo">
+        {% if current_user.is_authenticated %}
+        <div style="text-align: right; padding: 10px;">
+            <span style="margin-right: 10px; color: #fff;">Olá, {{ current_user.email }}</span>
+            <a href="/logout" class="btn btn-danger">Sair</a>
+        </div>
+        {% endif %}
+    </div>
     {% block conteudo %}{% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>
