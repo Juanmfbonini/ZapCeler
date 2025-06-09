@@ -50,6 +50,9 @@
                                 <td>
                                     <form action="/admin/usuario/{{ u[0] }}/set-free" method="post">
                                         <input type="checkbox" name="free" onchange="this.form.submit()" {% if u[2] == 'gratuito' %}checked{% endif %}>
+                                        <!--<input type="checkbox" name="basico" onchange="this.form.submit()" {% if u[2] == 'basico' %}checked{% endif %}>
+                                        <input type="checkbox" name="padrao" onchange="this.form.submit()" {% if u[2] == 'padrao' %}checked{% endif %}>
+                                        <input type="checkbox" name="premium" onchange="this.form.submit()" {% if u[2] == 'premium' %}checked{% endif %}>-->
                                     </form>
                                 </td>
                             </tr>

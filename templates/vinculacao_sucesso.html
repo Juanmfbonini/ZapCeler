@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Vinculação Concluída!</h4>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5 class="card-title">WhatsApp Business vinculado com sucesso!</h5>
+                    <div class="card-text">
+                        <p><strong>Número:</strong> {{ whatsapp_number }}</p>
+                        <p><strong>Plano:</strong> {{ plano_nome }}</p>
+                        <p><strong>Limite de clientes:</strong> 
+                            {% if limite_clientes == "Ilimitado" %}
+                                <span class="text-success">{{ limite_clientes }}</span>
+                            {% else %}
+                                {{ limite_clientes }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary">
+                            Começar a usar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="onboarding-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="verification-card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Vincular WhatsApp Business</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="/configurar-whatsapp">
+                        <div class="opcoes_cadastro">
+                            <label for="opcoes_numeros" class="form-label">Opções de Cadastros de Números</label><br>
+                            <select name="opcoes_numeros" id="opcoes_numeros" onchange="this.form.submit()">
+                                <option value="1" {% if opcoes_numeros == '1' %}selected{% endif %}>Criar Número Virtual</option>
+                                <option value="2" {% if opcoes_numeros == '2' %}selected{% endif %}>Usar Numero Existente</option>
+                            </select>
+                        </div>
+                        
+                        {% if opcoes_numeros == '1' %}
+                            <div class="mb-4">
+                                <label for="business_name" class="form-label">Nome da Empresa</label>
+                                <input type="text" class="form-control" id="business_name" name="business_name" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary w-100 py-2">
+                                Criar Número Virtual
+                            </button>
+                        {% else %}
+                            <div class="mb-4">
+                                <label for="phone_number" class="form-label">Número do WhatsApp Business</label>
+                                <input type="text" class="form-control" id="phone_number" name="phone_number" 
+                                    placeholder="Ex: 5511999999999 (sem +)" required>
+                                <div class="form-text text-muted">Digite o número vinculado à sua conta Business</div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="business_name" class="form-label">Nome da Empresa</label>
+                                <input type="text" class="form-control" id="business_name" name="business_name" required>
+                            </div>
+                            <br>
+                            <button type="submit" onclick="confirm('Ao vincular este número, ele ficará indisponível para uso em outros dispositivos, como celular, computador e tablet, devido às diretrizes do WhatsApp.\n Você tem certeza de que deseja continuar?')" class="btn btn-primary w-100 py-2">
+                                Iniciar Vinculação
+                            </button>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

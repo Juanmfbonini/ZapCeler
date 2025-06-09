@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">Verificação por SMS</h4>
+                </div>
+                <div class="card-body">
+                    <p class="alert alert-info">
+                        Enviamos um código de 6 dígitos para <strong>{{ phone_number }}</strong>
+                    </p>
+                    
+                    <form method="POST" action="{{ url_for('verificar_codigo') }}">
+                        <div class="mb-3">
+                            <label for="verification_code" class="form-label">Código de Verificação</label>
+                            <input type="text" 
+                                   class="form-control verification-code" 
+                                   id="verification_code"
+                                   name="verification_code" 
+                                   maxlength="6"
+                                   pattern="\d{6}"
+                                   title="Digite exatamente 6 dígitos"
+                                   required>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">
+                                Validar Código
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" id="resend-code">
+                                Reenviar Código
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

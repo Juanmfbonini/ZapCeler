@@ -8,7 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading d-flex justify-content-between align-items-center">
                         <h2 class="my-4">Cadastrado de Clientes</h2>
-                        <h3 class="panel-title">Quem você precisa procurar hoje?</h3>
+                        <h3 class="panel-title">Quem você precisa procurar?</h3>
                     </div>
                     <div class="container">
                         <br/>
@@ -16,17 +16,13 @@
                             <div class="col-12 col-md-10 col-lg-8">
                                 <form action="/clientes" method="post" class="card card-sm">
                                     <div class="card-body row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <i class="fas fa-search h4 text-body"></i>
-                                        </div>
                                         <div class="col">
                                             <input 
                                                 class="form-control form-control-lg form-control-borderless" 
                                                 type="search" 
                                                 name="search"
                                                 placeholder="Procure o seu cliente usando o nome e/ou numero cadastrado dele"
-                                                value="{{ search_query if search_query }}"
-                                            >
+                                                value="{{ search_query if search_query }}">
                                         </div>
                                         <div class="col-auto">
                                             <button class="btn btn-lg btn-success" type="submit">Buscar</button>

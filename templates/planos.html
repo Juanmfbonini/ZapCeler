@@ -1,39 +1,64 @@
 {% extends "layout.html" %}
 
 {% block conteudo %}
-{% if current_user.is_authenticated and current_user.status != 'nao_pago' %}
-<div class="btn btn2">
-    <a href="/">Voltar</a>
-</div>
-{% elif not current_user.is_authenticated %}
-<div class="btn btn2">
-    <a href="/login">Voltar</a>
-</div>
-{% endif %}
-<div class="container" style="margin-top: 40px;">
-    <div class="row text-center">
-        <h2 style="color: #fff;">Escolha um Plano</h2>
-        <hr>
+<div class="plans-container">
+    <!-- Header Section -->
+    <div class="plans-header">
+        {% if current_user.is_authenticated %}
+            {% if current_user.status != 'nao_pago' %}
+                <a href="/" class="btn btn-back">← Voltar</a>
+            {% endif %}
+        {% else %}
+            <a href="/login" class="btn btn-back">← Voltar</a>
+        {% endif %}
+
+        <h1 class="plans-title">Escolha um Plano</h1>
+        <div class="divider"></div>
     </div>
 
-    <div class="row">
+    <!-- Plans Grid -->
+    <div class="plans-grid">
         {% for plano in planos %}
-        <div class="col-md-4 col-sm-6">
-            <div class="panel panel-pricing">
-                <div class="panel-heading text-center">
-                    <h3>{{ plano[1] }}</h3>
-                </div>
-                <div class="panel-body text-center">
-                    <p><strong>R$ {{ plano[2]/100 }} / mês</strong></p>
-                    {% if plano[3] %}
-                        <p style="font-size: 15px; color: #555;">{{ plano[3] }}</p>
-                    {% endif %}
-                </div>
-                <div class="panel-footer text-center">
+        <div class="plan-card">
+            <div class="plan-header">
+                <h2>{{ plano[1] }}</h2>
+            </div>
+            
+            <div class="plan-body">
+                <p class="plan-price">R$ {{ "%.2f"|format(plano[2]/100) }} <span>/mês</span></p>
+                {% if plano[3] %}
+                    <p class="plan-description"><h3 class="descricao">{{ plano[3] }}</h3></p>
+                {% endif %}
+            </div>
+            <div class="plan-footer">
+                {% if current_user.status != "gratuito" %}
+                    {% if plano[0] == 1 %}  <!-- Test Plan -->
+                <form action="/ativar-teste-gratis" method="post">
+                    <button type="submit" class="btn-test {% if current_user.status != 'testando' and test_used %}used-test{% endif %}">
+                        {% if current_user.status == 'testando' %}
+                            ✓ Teste Ativo
+                        {% elif test_used %}
+                            O TESTE JÁ FOI ENCERRADO
+                        {% else %}
+                            Testar
+                        {% endif %}
+                    </button>
+                </form>
+                {% else %}
                     <form action="/create-checkout-session/{{ plano[0] }}" method="post">
-                        <button type="submit" class="btn btn-success">Comprar</button>
+                        <button type="submit" class="btn-buy">
+                            Assinar Agora
+                        </button>
                     </form>
-                </div>
+                {% endif %}
+                
+                {% else %}  <!-- Plano Gratuito -->
+                <form action="/create-checkout-session/{{ plano[0] }}" method="post">
+                    <button type="submit" class="btn-buy">
+                        INDISPONIVEL
+                    </button>
+                </form>
+                {% endif %}
             </div>
         </div>
         {% endfor %}

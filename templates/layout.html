@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZapCeler</title>
+    <title>ZapCeler - Upgrade</title>
     <meta name="description" content="Envie mensagens automáticas para seus clientes de forma prática e eficiente.">
     <meta name="robots" content="index, follow">
     <meta name="language" content="pt-BR">
@@ -20,10 +20,24 @@
         <div style="text-align: right; padding: 10px;">
             <span style="margin-right: 10px; color: #fff;">Olá, {{ current_user.email }}</span>
             <a href="/logout" class="btn btn-danger">Sair</a>
+            {% if current_user.email == ADMIN_EMAIL %}
+                <a href="/admin/usuarios" class="btn btn2">Usuarios Cadastrados</a>
+                <a href="/admin/planos" class="btn btn2">Planos Pagos</a>
+            {% endif %}
         </div>
         {% endif %}
     </div>
-    {% block conteudo %}{% endblock %}
+    {% block conteudo %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-warning" style="text-align:center; margin: 20px;">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  {% endblock %}
     <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>

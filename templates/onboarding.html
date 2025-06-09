@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="onboarding-container">
+    <div class="text-center mb-5">
+        <h2 class="display-5 text-white">Configuração do WhatsApp Business</h2>
+        <p class="lead text-white">Siga estes passos para começar a enviar mensagens</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+        {% for step in steps %}
+        <div class="col-md-4">
+            <div class="step-card {% if loop.index <= step_completed %}completed{% endif %}">
+                <div class="card-body">
+                    <div>
+                        <div class="step-number rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 text-white fw-bold">
+                            {{ loop.index }}
+                        </div>
+                        <h5 class="card-title text-center">{{ step }}</h5>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        {% if loop.index == 1 %}
+                            <a href="{{ url_for('configurar_whatsapp') }}" class="btn btn-outline-primary w-100">Começar</a>
+                        {% elif loop.index == 2 %}
+                            {% if step_completed >= 1 %}
+                                <a href="{{ url_for('verificar_codigo') }}" class="btn btn-outline-primary w-100">
+                                    {% if step_completed >= 2 %}Revisar{% else %}Continuar{% endif %}
+                                </a>
+                            {% else %}
+                                <button class="btn btn-outline-secondary w-100" disabled>Bloqueado</button>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="progress-container">
+        <div class="progress" style="height: 8px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: {{ progress }}%;" 
+                 aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p class="progress-text text-center text-white">Progresso: {{ progress }}%</p>
+    </div>
+</div>
+{% endblock %}
